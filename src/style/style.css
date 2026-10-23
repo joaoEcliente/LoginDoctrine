@@ -1,0 +1,25 @@
+body{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item{
+        margin-left: 90%;
+}
+
+#container{
+    border: 0.5px solid #000;
+}
+
+.container > h1{
+    text-align: center;
+}
+
+#cabecalho > span{
+    color: #000000;
+}
+
+.usuarios > span{
+    color: #524c4c60;
+}

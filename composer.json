@@ -1,0 +1,17 @@
+{
+    "name": "joao/login-doctrine",
+    "autoload": {
+        "psr-0": {"": "src/"}
+    },
+    "authors": [
+        {
+            "name": "João Damasio",
+            "email": "joao.vitor@ecliente.com.br"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "*",
+        "doctrine/dbal": "^4",
+        "symfony/cache": "^7"
+    }
+}

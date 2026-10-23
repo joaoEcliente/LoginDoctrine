@@ -1,0 +1,10 @@
+CREATE DATABASE login_doctrine;
+
+USE login_doctrine;
+
+CREATE TABLE usuario(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(155) NOT NULL,
+    email VARCHAR(155) UNIQUE NOT NULL,
+    senha VARCHAR(20) NOT NULL
+);
