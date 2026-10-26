@@ -1,4 +1,5 @@
 import { AdapterHome } from "./AdapterHome.js";
+import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios()
 {
@@ -32,18 +33,16 @@ document.getElementById('contentUser').addEventListener('click', function(event)
 
     if (botao) {
         const usuario = botao.closest('.usuario');
-        
+
         if(!usuario){
             return;
         }
 
         const id = usuario.dataset.id;
-        const nome = usuario.dataset.nome;
-        const email = usuario.dataset.email;
 
-        document.getElementById('nomeUsuario').value = nome;
-        document.getElementById('emailUsuario').value = email;
-        document.getElementById('idUsuario').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_alterar(id);
+
     }
 
 });
@@ -65,16 +64,15 @@ document.getElementById('contentUser').addEventListener('click', function(event)
     }
 
     const id = usuario.dataset.id;
-    const nome = usuario.dataset.nome;
 
     if (botaoAtivar) {
-        document.getElementById('nomeModalAtivar').textContent = nome;
-        document.getElementById('idUsuarioAtivar').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_ativar(id);
     }
 
     if (botaoDesativar) {
-        document.getElementById('nomeModalDesativar').textContent = nome;
-        document.getElementById('idUsuarioDesativar').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_desativar(id);
     }
 });
 

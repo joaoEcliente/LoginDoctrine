@@ -1,4 +1,5 @@
 import { AdapterHome } from "./AdapterHome.js";
+import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios()
 {
@@ -40,15 +41,13 @@ $('#contentUser').click(function(e){
         }
 
         const id = usuario.dataset.id;
-        const nome = usuario.dataset.nome;
-        const email = usuario.dataset.email;
 
         // document.getElementById('nomeUsuario').value = nome;
         // document.getElementById('emailUsuario').value = email;
         // document.getElementById('idUsuario').value = id;
-        $('#nomeUsuario').val(nome);
-        $('#emailUsuario').val(email);
-        $('#idUsuario').val(id);
+        
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_alterar(id);        
 
     }
 
@@ -73,20 +72,19 @@ $('#contentUser').click(function(e) {
     }
 
     const id = usuario.dataset.id;
-    const nome = usuario.dataset.nome;
 
     if (botaoAtivar) {
         // document.getElementById('nomeModalAtivar').textContent = nome;
         // document.getElementById('idUsuarioAtivar').value = id;
-        $('#nomeModalAtivar').text(nome);
-        $('#idUsuarioAtivar').val(id);
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_ativar(id);
     }
 
     if (botaoDesativar) {
         // document.getElementById('nomeModalDesativar').textContent = nome;
         // document.getElementById('idUsuarioDesativar').value = id;
-        $('#nomeModalDesativar').text(nome);
-        $('#idUsuarioDesativar').val(id);
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_desativar(id);
     }
 });
 

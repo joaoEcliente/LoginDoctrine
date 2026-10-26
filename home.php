@@ -26,7 +26,7 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
     <div class="container mt-4">
         <h1>Usuários Cadastrados</h1>
         <div class="container-md mt-4" id="container">
-            <div class="row" style="border-bottom: 1px #000 solid;" id="cabecalho">
+            <div class="row border-bottom border-dark pb-2" id="cabecalho">
                 <span class='col' style="text-align: center;">Nome</span>
                 <span class='col' style="text-align: center;">Email</span>
                 <span class='col' style="text-align: center;">Status</span>

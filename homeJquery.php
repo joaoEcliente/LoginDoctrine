@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <ul class="nav">

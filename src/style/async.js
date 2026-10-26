@@ -1,4 +1,5 @@
 import { AdapterHome } from "./AdapterHome.js";
+import { ModalAsync } from "./ModalAsync.js";
 
 function listarUsuarios()
 {
@@ -45,7 +46,6 @@ function listarUsuarios()
 
     xhr.send();
 }
-
 // Modal alterar
 document.getElementById('contentUser').addEventListener('click', function(event) {
     const botao = event.target.closest('.btn-alterar');
@@ -58,19 +58,16 @@ document.getElementById('contentUser').addEventListener('click', function(event)
         }
 
         const id = usuario.dataset.id;
-        const nome = usuario.dataset.nome;
-        const email = usuario.dataset.email;
 
-        document.getElementById('nomeUsuario').value = nome;
-        document.getElementById('emailUsuario').value = email;
-        document.getElementById('idUsuario').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_alterar(id);
+
     }
 
 });
 
 // Modal Ativar e Desativar
-document.getElementById('contentUser').addEventListener('click', function(event)
-{
+document.getElementById('contentUser').addEventListener('click', function(event) {
     const botaoAtivar = event.target.closest('.btn-ativar');
     const botaoDesativar = event.target.closest('.btn-desativar');
 
@@ -86,18 +83,16 @@ document.getElementById('contentUser').addEventListener('click', function(event)
     }
 
     const id = usuario.dataset.id;
-    const nome = usuario.dataset.nome;
 
     if (botaoAtivar) {
-        document.getElementById('nomeModalAtivar').textContent = nome;
-        document.getElementById('idUsuarioAtivar').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_ativar(id);
     }
 
     if (botaoDesativar) {
-        document.getElementById('nomeModalDesativar').textContent = nome;
-        document.getElementById('idUsuarioDesativar').value = id;
+        const modalAsync = new ModalAsync();
+        modalAsync.modal_desativar(id);
     }
-
 });
 
 listarUsuarios();
