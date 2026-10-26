@@ -23,14 +23,14 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
         </li>
     </ul>
 
-    <div class="container">
-        <h1>Usuarios Cadastrados</h1>
-        <div class="container-md" id="container">
+    <div class="container mt-4">
+        <h1>Usuários Cadastrados</h1>
+        <div class="container-md mt-4" id="container">
             <div class="row" style="border-bottom: 1px #000 solid;" id="cabecalho">
-                <span class='col'>Nome</span>
-                <span class='col'>Email</span>
-                <span class='col'>Status</span>
-                <span class='col'>Ação</span>
+                <span class='col' style="text-align: center;">Nome</span>
+                <span class='col' style="text-align: center;">Email</span>
+                <span class='col' style="text-align: center;">Status</span>
+                <span class='col' style="text-align: center;">Ação</span>
             </div>
             
             <!-- Modal de Ativação -->
@@ -50,9 +50,6 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
                 <div class="modal-body" id="body-ativar">
                     <p>Tem certeza de que deseja ativar o usuário <strong id="pAtivar"></strong></p>
                 </div>
-
-                
-                
 
                 <div class="modal-footer">
 
@@ -83,9 +80,6 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
                 <div class="modal-body" id="body-desativar">
                     <p>Tem certeza de que deseja desativar o usuário <strong id="pDesativar"></strong></p>
                 </div>
-
-                
-                
 
                 <div class="modal-footer">
 
@@ -122,9 +116,6 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
 
                 </div>
 
-                
-                
-
                 <div class="modal-footer">
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -142,16 +133,17 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
             data-id="<?= htmlspecialchars((string) $u->getId()) ?>"
             data-nome="<?= htmlspecialchars($u->getNome()) ?>"
             data-email="<?= htmlspecialchars($u->getEmail()) ?>"
-            data-status="<?= htmlspecialchars($u->getStatus()) ?>">
+            data-status="<?= htmlspecialchars($u->getStatus()) ?>"
+            style="display: flex;align-items: center; text-align: center; border-bottom: 0.2px solid #000000;">
 
             <span class="col-3"><?= htmlspecialchars($u->getNome()) ?></span>
             <span class="col-3"><?= htmlspecialchars($u->getEmail()) ?></span>
-            <span class="col-2"><?= htmlspecialchars($u->getStatus()) ?></span>
+            <span class="col-3"><?= htmlspecialchars($u->getStatus()) ?></span>
 
             <?php if(htmlspecialchars(($u->getStatus()) == 'N')) : ?>
                 <button type="button"
                         style="margin: 5px; display: block;"
-                        class="btn btn-success col-1 btn-ativar"
+                        class="btn btn-success col btn-ativar"
                         data-bs-toggle="modal"
                         data-bs-target="#modalAtivar">
                     Ativar
@@ -160,7 +152,7 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
             <?php if(htmlspecialchars(($u->getStatus()) == 'S')) : ?>
             <button type="button"
                     style="margin: 5px; display: block;"
-                    class="btn btn-danger col-1 btn-desativar"
+                    class="btn btn-danger col btn-desativar"
                     data-bs-toggle="modal"
                     data-bs-target="#modalDesativar">
                 Desativar
@@ -169,7 +161,7 @@ $usuarios = $entityManager->getRepository(User::class)->findAll();
 
             <button type="button"
                     style="margin: 5px;"
-                    class="btn btn-info col-1 btn-alterar"
+                    class="btn btn-info col btn-alterar"
                     data-bs-toggle="modal"
                     data-bs-target="#modalAlterar">
                 Atualizar

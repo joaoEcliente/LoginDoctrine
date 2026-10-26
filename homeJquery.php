@@ -19,11 +19,11 @@
     <div class="container mt-4">
         <h1>Usuários Cadastrados</h1>
         <div class="container-md mt-4" id="container">
-            <div class="row border-bottom border-dark pb-2 mb-2" id="cabecalho">
-                <span class="col-3">Nome</span>
-                <span class="col-3">Email</span>
-                <span class="col-2">Status</span>
-                <span class="col-4">Ação</span>
+            <div class="row border-bottom border-dark pb-2" id="cabecalho">
+                <span class="col" style="text-align: center;">Nome</span>
+                <span class="col" style="text-align: center;">Email</span>
+                <span class="col" style="text-align: center;">Status</span>
+                <span class="col" style="text-align: center;">Ação</span>
             </div>
 
             <div id="contentUser"></div>
