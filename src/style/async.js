@@ -15,12 +15,12 @@ function listarUsuarios()
 
                 conteudoUsuario.innerHTML = '';
 
-                user_json.forEach(users => {
+                user_json.forEach(u => {
 
-                    let id = users.Id;
-                    let nome = users.Nome;
-                    let email = users.Email;
-                    let status = users.Status;
+                    let id = u.Id;
+                    let nome = u.Nome;
+                    let email = u.Email;
+                    let status = u.Status;
 
                     let adapter = new AdapterHome();
                     let UsuarioHTML = adapter.contentUser(id, nome, email, status);

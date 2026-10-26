@@ -42,7 +42,6 @@ export class AdapterHome {
         //     <span class="col-3">${email}</span>
         //     <span class="col-2">${status}</span>
 
-
         let botoesStatus = '';
 
         if(status === 'S') {

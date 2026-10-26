@@ -3,7 +3,7 @@ import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios() {
     try {
-        await axios.get("lista_usuario_async.php?file=homeAxios")
+        await axios.get("lista_usuario_async.php")
 
         .then((response) => {
             const conteudoUsuario = document.getElementById('contentUser');

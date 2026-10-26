@@ -10,9 +10,9 @@ export class ModalAsync{
                     let nome = usuario.Nome;
                     let email = usuario.Email;
 
-                    $('#nomeUsuario').val(nome)
-                    $('#emailUsuario').val(email)
-                    $('#idUsuario').val(id)
+                    $('#nomeUsuario').val(nome);
+                    $('#emailUsuario').val(email);
+                    $('#idUsuario').val(id);
 
                     console.log(`id: ${id}\nnome: ${nome}\nemail: ${email}\n`);
                 } else {
@@ -37,7 +37,7 @@ export class ModalAsync{
                     let nome = usuario.Nome;
 
                     $('#nomeModalAtivar').text(nome);
-                    $('#idUsuarioAtivar').text(id);
+                    $('#idUsuarioAtivar').val(id);
 
                     console.log(`id: ${id}\nnome: ${nome}\n`);
                 } else {
@@ -62,7 +62,7 @@ export class ModalAsync{
                     let nome = usuario.Nome;
 
                     $('#nomeModalDesativar').text(nome);
-                    $('#idUsuarioDesativar').text(id);
+                    $('#idUsuarioDesativar').val(id);
 
                     console.log(`id: ${id}\nnome: ${nome}\n`);
                 } else {

@@ -20,6 +20,7 @@ async function listarUsuarios()
                     let usuarioHtml = adapter.contentUser(id, nome, email, status);
 
                     $(conteudoUsuarios).append(usuarioHtml);
+                    // conteudoUsuarios.appendChild(usuarioHtml);
                 });
             })
         })
@@ -41,10 +42,6 @@ $('#contentUser').click(function(e){
         }
 
         const id = usuario.dataset.id;
-
-        // document.getElementById('nomeUsuario').value = nome;
-        // document.getElementById('emailUsuario').value = email;
-        // document.getElementById('idUsuario').value = id;
         
         const modalAsync = new ModalAsync();
         modalAsync.modal_alterar(id);        
@@ -74,15 +71,12 @@ $('#contentUser').click(function(e) {
     const id = usuario.dataset.id;
 
     if (botaoAtivar) {
-        // document.getElementById('nomeModalAtivar').textContent = nome;
-        // document.getElementById('idUsuarioAtivar').value = id;
         const modalAsync = new ModalAsync();
         modalAsync.modal_ativar(id);
+
     }
 
     if (botaoDesativar) {
-        // document.getElementById('nomeModalDesativar').textContent = nome;
-        // document.getElementById('idUsuarioDesativar').value = id;
         const modalAsync = new ModalAsync();
         modalAsync.modal_desativar(id);
     }
