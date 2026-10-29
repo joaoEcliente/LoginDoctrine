@@ -1,4 +1,4 @@
-import { AdapterHome } from "./AdapterHome.js";
+import { AdapterHomeTable } from "./AdapterHomeTable.js";
 import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios() {
@@ -14,13 +14,13 @@ async function listarUsuarios() {
                 let nome = u.Nome;
                 let email = u.Email;
                 let status = u.Status;
-    
-                let adapter = new AdapterHome();
+
+                let adapter = new AdapterHomeTable();
                 let usuarioHTML = adapter.contentUser(id, nome, email, status);
 
                 conteudoUsuario.appendChild(usuarioHTML);
             });
-            
+
         });
     } catch (error) {
         if (error.response) {
@@ -42,18 +42,14 @@ async function listarUsuarios() {
 document.getElementById('contentUser').addEventListener('click', function(event) {
     const botao = event.target.closest('.btn-alterar');
 
-    if (botao) {
-        const usuario = botao.closest('.usuario');
-
-        if(!usuario){
-            return;
-        }
-
-        const id = usuario.dataset.id;
+    if(botao) {
+        const id = botao.dataset.id;
 
         const modalAsync = new ModalAsync();
         modalAsync.modal_alterar(id);
 
+    } else {
+        return;
     }
 
 });
@@ -66,25 +62,25 @@ document.getElementById('contentUser').addEventListener('click', function(event)
     if (!botaoAtivar && !botaoDesativar) {
         return;
     }
-
+    
     const botao = botaoAtivar || botaoDesativar;
-    const usuario = botao.closest('.usuario');
-
-    if (!usuario) {
+    
+    if(botao) {    
+        const id = botao.dataset.id;
+        
+        if (botaoAtivar) {
+            const modalAsync = new ModalAsync();
+            modalAsync.modal_ativar(id);
+        }
+    
+        if (botaoDesativar) {
+            const modalAsync = new ModalAsync();
+            modalAsync.modal_desativar(id);
+        }
+    } else {
         return;
     }
 
-    const id = usuario.dataset.id;
-
-    if (botaoAtivar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_ativar(id);
-    }
-
-    if (botaoDesativar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_desativar(id);
-    }
 });
 
 listarUsuarios();

@@ -65,29 +65,31 @@ class User {
         return true;
 
     }
-
-    public function disableUser()
-    {
-        $this->status = 'N';
-    }
-
+    
     public function updateNome(string $nome): User
     {
         $this->nome = $nome;
-
+        
         return $this;
-    }
+        }
 
-    public function updateEmail(string $email): User
+        public function updateEmail(string $email): User
     {
         $this->email = $email;
 
         return $this;
     }
-
+    
     public function activateUser()
     {
         $this->status = 'S';
+        return $this->status;
     }
 
-}
+    public function disableUser()
+    {
+        $this->status = 'N';
+        return $this->status;
+    }
+
+    }

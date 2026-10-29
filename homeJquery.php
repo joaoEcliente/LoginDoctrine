@@ -17,7 +17,7 @@
         </li>
     </ul>
 
-    <div class="container mt-4">
+    <!-- <div class="container mt-4">
         <h1>Usuários Cadastrados</h1>
         <div class="container-md mt-4" id="container">
             <div class="row border-bottom border-dark pb-2" id="cabecalho">
@@ -30,7 +30,22 @@
             <div id="contentUser"></div>
 
         </div>
-    </div>
+    </div> -->
+
+    <table class="table table-bordered" style="text-align: center;">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+
+        <tbody id="contentUser">
+
+        </tbody>
+    </table>
 
     <!-- Modal Ativar -->
     <div class="modal fade"

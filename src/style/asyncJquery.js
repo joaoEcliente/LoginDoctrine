@@ -1,4 +1,4 @@
-import { AdapterHome } from "./AdapterHome.js";
+import { AdapterHomeTable } from "./AdapterHomeTable.js";
 import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios()
@@ -16,7 +16,7 @@ async function listarUsuarios()
                     let email = u.Email;
                     let status = u.Status;
 
-                    const adapter = new AdapterHome();
+                    const adapter = new AdapterHomeTable();
                     let usuarioHtml = adapter.contentUser(id, nome, email, status);
 
                     $(conteudoUsuarios).append(usuarioHtml);
@@ -31,20 +31,14 @@ async function listarUsuarios()
 
 // Modal alterar
 // document.getElementById('contentUser').addEventListener('click', function(event) {
-$('#contentUser').click(function(e){
+$('#contentUser').on("click", function(e){
     const botao = e.target.closest('.btn-alterar');
 
     if (botao) {
-        const usuario = botao.closest('.usuario');
-        
-        if(!usuario){
-            return;
-        }
-
-        const id = usuario.dataset.id;
+        const id = botao.dataset.id;
         
         const modalAsync = new ModalAsync();
-        modalAsync.modal_alterar(id);        
+        modalAsync.modal_alterar(id);
 
     }
 
@@ -52,8 +46,8 @@ $('#contentUser').click(function(e){
 
 // Modal Ativar e Desativar
 // document.getElementById('contentUser').addEventListener('click', function(event) {
-$('#contentUser').click(function(e) {
-    
+$('#contentUser').on("click", function(e) {
+
     const botaoAtivar = e.target.closest('.btn-ativar');
     const botaoDesativar = e.target.closest('.btn-desativar');
 
@@ -62,23 +56,23 @@ $('#contentUser').click(function(e) {
     }
 
     const botao = botaoAtivar || botaoDesativar;
-    const usuario = botao.closest('.usuario');
 
-    if (!usuario) {
+    if(botao) {
+        const id = botao.dataset.id;
+
+        if (botaoAtivar) {
+            const modalAsync = new ModalAsync();
+            modalAsync.modal_ativar(id);
+
+        }
+
+        if (botaoDesativar) {
+            const modalAsync = new ModalAsync();
+            modalAsync.modal_desativar(id);
+        }
+
+    } else {
         return;
-    }
-
-    const id = usuario.dataset.id;
-
-    if (botaoAtivar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_ativar(id);
-
-    }
-
-    if (botaoDesativar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_desativar(id);
     }
 });
 

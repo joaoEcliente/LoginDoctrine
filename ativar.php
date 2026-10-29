@@ -3,9 +3,10 @@
 require_once 'bootstrap.php';
 
 $id = htmlspecialchars(filter_input(INPUT_POST, 'idUsuario'));
+var_dump($id);
 
 $nameFile = htmlspecialchars(filter_input(INPUT_POST, 'nameFile'));
-
+var_dump($nameFile);
 $arrayDir = ['home', 'homeAsync', 'homeAxios', 'homeFetch', 'homeJquery'];
 
 if(!in_array($nameFile, $arrayDir, true)){
@@ -17,8 +18,7 @@ if(!in_array($nameFile, $arrayDir, true)){
 $usuario = $entityManager->getRepository(User::class)->findOneBy(['id' => $id]);
 
 $entityManager->persist($usuario);
-$usuario->activateUser();
+$teste = $usuario->activateUser();
 $entityManager->flush();
-
 
 header('location:' . $nameFile . '.php');

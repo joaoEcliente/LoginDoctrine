@@ -1,4 +1,4 @@
-import { AdapterHome } from "./AdapterHome.js";
+import { AdapterHomeTable } from "./AdapterHomeTable.js";
 import { ModalAsync } from "./ModalAsync.js";
 
 async function listarUsuarios()
@@ -16,7 +16,7 @@ async function listarUsuarios()
             let email = u.Email;
             let status = u.Status;
 
-            const adapter = new AdapterHome();
+            const adapter = new AdapterHomeTable();
             let usuarioHtml = adapter.contentUser(id, nome, email, status);
 
             conteudoUsuarios.appendChild(usuarioHtml);
@@ -29,51 +29,48 @@ async function listarUsuarios()
 
 // Modal alterar
 document.getElementById('contentUser').addEventListener('click', function(event) {
-    const botao = event.target.closest('.btn-alterar');
+        const botao = event.target.closest('.btn-alterar');
 
-    if (botao) {
-        const usuario = botao.closest('.usuario');
+        if (botao) {
+            const id = botao.dataset.id;
 
-        if(!usuario){
+            const modalAsync = new ModalAsync();
+            modalAsync.modal_alterar(id);
+
+        } else {
             return;
         }
-
-        const id = usuario.dataset.id;
-
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_alterar(id);
-
-    }
 
 });
 
 // Modal Ativar e Desativar
 document.getElementById('contentUser').addEventListener('click', function(event) {
-    const botaoAtivar = event.target.closest('.btn-ativar');
-    const botaoDesativar = event.target.closest('.btn-desativar');
+        const botaoAtivar = event.target.closest('.btn-ativar');
+        const botaoDesativar = event.target.closest('.btn-desativar');
 
-    if (!botaoAtivar && !botaoDesativar) {
-        return;
-    }
+        if (!botaoAtivar && !botaoDesativar) {
+            return;
+        }
 
-    const botao = botaoAtivar || botaoDesativar;
-    const usuario = botao.closest('.usuario');
+        const botao = botaoAtivar || botaoDesativar;
 
-    if (!usuario) {
-        return;
-    }
+        if(botao) {
+            const id = botao.dataset.id;
+            
+            if (botaoAtivar) {
+                const modalAsync = new ModalAsync();
+                modalAsync.modal_ativar(id);
+                
+            }
+            
+            if (botaoDesativar) {
+                const modalAsync = new ModalAsync();
+                modalAsync.modal_desativar(id);
 
-    const id = usuario.dataset.id;
-
-    if (botaoAtivar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_ativar(id);
-    }
-
-    if (botaoDesativar) {
-        const modalAsync = new ModalAsync();
-        modalAsync.modal_desativar(id);
-    }
+            }
+        } else {
+            return;
+        }
 });
 
 listarUsuarios();
